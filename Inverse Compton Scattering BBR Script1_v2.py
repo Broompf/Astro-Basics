@@ -1,3 +1,4 @@
+import streamlit as st
 import sympy as sym
 #constants
 h = 6.626 * (10**(-34))
@@ -6,10 +7,10 @@ k = 1.38
 r = 2.817 * (10**(-15))
 
 print("input values")
-p = float(input("Enter value for Momentum: "))
-E = float(input("Enter value for Energy of the Seed Photon: "))
-T = float(input("Enter value for Temperature in K: "))
-c = float(input("Enter value for Normalization of electron energy distribution: "))
+p = st.number_input("Enter value for Momentum: ",value=2.5)
+E = st.number_input("Enter value for Energy of the Seed Photon: ",value=2.72)
+T = st.number_input("Enter value for Temperature in K: ",value=2.72)
+c = st.number_input("Enter value for Normalization of electron energy distribution: ",value=2.72)
 
 def vol_emmissivity(p,E,T,c):
     a = p + 3
@@ -37,4 +38,4 @@ def vol_emmissivity(p,E,T,c):
     return exp
 
 value=vol_emmissivity(p,E,T,c)
-print(f"Volume Emmissivity is {value:e} Js-1KeV-1K-1")
+st.write(f"Volume Emmissivity is {value:e} Js-1KeV-1K-1")
