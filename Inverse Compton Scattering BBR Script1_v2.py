@@ -1,5 +1,6 @@
 import streamlit as st
 import sympy as sym
+st.header ("Wow")
 #constants
 h = 6.626 * (10**(-34))
 L = 2.99 * (10**8)
@@ -38,4 +39,4 @@ def vol_emmissivity(p,E,T,c):
     return exp
 
 value=vol_emmissivity(p,E,T,c)
-st.write(f"Volume Emmissivity is {value:e} Js-1KeV-1K-1")
+st.info(f"Volume Emmissivity is {value:e} Js-1KeV-1K-1")
