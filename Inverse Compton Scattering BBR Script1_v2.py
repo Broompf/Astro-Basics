@@ -7,7 +7,7 @@ L = 2.99 * (10**8)
 k = 1.38
 r = 2.817 * (10**(-15))
 
-print("input values")
+st.write("input values")
 p = st.number_input("Enter value for Momentum: ",value=2.5)
 E = st.number_input("Enter value for Energy of the Seed Photon: ",value=2.72)
 T = st.number_input("Enter value for Temperature in K: ",value=2.72)
