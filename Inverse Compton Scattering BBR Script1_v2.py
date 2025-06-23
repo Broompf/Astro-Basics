@@ -53,5 +53,5 @@ def vol_emmissivity(p,E,T):
     exp = X *(1.6*(10**(-16)))
     return exp
 
-value=vol_emmissivity(p,E,T,c)
+value=vol_emmissivity(p,E,T)
 st.info(f"Volume Emmissivity is {value:e} Js-1KeV-1K-1")
