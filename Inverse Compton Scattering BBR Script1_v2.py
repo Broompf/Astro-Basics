@@ -19,7 +19,7 @@ B = st.number_input("Enter value for Magnetic Field: ",value=2.72)
 l = st.number_input("Enter value for L: ",value=2.72)
 s = st.number_input("Enter value for C3: ",value=2.72)
 
-def c(s,l,B):
+def findc(s,l,B):
   y = 3-p
   G = (P**y) - (Q**y)
   v = m*(L**2)
@@ -27,12 +27,13 @@ def c(s,l,B):
   N = (l/(s*(B**2))*(v**y))*(y/((Q**y)-(P**y)))
 
   c = (N*(v**(-p)))
-
+  return c
 def vol_emmissivity(p,E,T):
     a = p + 3
     #print(f"a={a}")                                                        
     b = (p + 5) / 2
-    #print(f"b={b}")                                                          
+    #print(f"b={b}")  
+    c = findc(s,l,B)
     x = (p - 1) / 2
     #print(f"x={x}")                                                        
     A = ((p**2) + 4*p + 11) / ((a**2)*(2*b)*(p + 1))
