@@ -6,6 +6,10 @@ h = 6.626 * (10**(-34))
 L = 2.99 * (10**8)
 k = 1.38
 r = 2.817 * (10**(-15))
+P = 10
+Q = 10**5
+m = 9*(10**(-31))
+
 
 st.write("input values")
 p = st.number_input("Enter value for Momentum: ",value=2.5)
@@ -13,11 +17,20 @@ E = st.number_input("Enter value for Energy of the Seed Photon: ",value=2.72)
 T = st.number_input("Enter value for Temperature in K: ",value=2.72)
 c = st.number_input("Enter value for Normalization of electron energy distribution: ",value=2.72)
 
-def vol_emmissivity(p,E,T,c):
+def c(s,B)
+  y = 3-p
+  G = (P**y) - (Q**y)
+  v = m*(L**2)
+
+  N = (L/(s*(B**2))*(v**y))*(y/((Q**y)-(P**y)))
+
+  c = (N*(v**(-p)))
+
+def vol_emmissivity(p,E,T):
     a = p + 3
     #print(f"a={a}")                                                        
     b = (p + 5) / 2
-    #print(f"b={b}")                                                        
+    #print(f"b={b}")                                                          
     x = (p - 1) / 2
     #print(f"x={x}")                                                        
     A = ((p**2) + 4*p + 11) / ((a**2)*(2*b)*(p + 1))
