@@ -15,14 +15,16 @@ st.write("input values")
 p = st.number_input("Enter value for Momentum: ",value=2.5)
 E = st.number_input("Enter value for Energy of the Seed Photon: ",value=2.72)
 T = st.number_input("Enter value for Temperature in K: ",value=2.72)
-c = st.number_input("Enter value for Normalization of electron energy distribution: ",value=2.72)
+B = st.number_input("Enter value for Magnetic Field: ",value=2.72)
+l = st.number_input("Enter value for L: ",value=2.72)
+s = st.number_input("Enter value for C3: ",value=2.72)
 
-def c(s,B)
+def c(s,l,B):
   y = 3-p
   G = (P**y) - (Q**y)
   v = m*(L**2)
 
-  N = (L/(s*(B**2))*(v**y))*(y/((Q**y)-(P**y)))
+  N = (l/(s*(B**2))*(v**y))*(y/((Q**y)-(P**y)))
 
   c = (N*(v**(-p)))
 
