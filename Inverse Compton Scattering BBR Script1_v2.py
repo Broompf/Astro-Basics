@@ -1,6 +1,6 @@
 import streamlit as st
 import sympy as sym
-st.header ("Wow")
+#Programme Conditionals---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------X
 #constants
 h = 6.626 * (10**(-34))
 L = 2.99 * (10**8)
@@ -10,14 +10,20 @@ P = 10
 Q = 10**5
 m = 9*(10**(-31))
 
+#Webapp Layout------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------X
 
-st.write("input values")
+st.title("Inverse Compton Spectra for Single Scattering")
+st.header("Black Body Radiation Condition)
+
+st.sidebar.write("input values")
 p = st.number_input("Enter value for Momentum: ",value=2.5)
 E = st.number_input("Enter value for Energy of the Seed Photon: ",value=2.72)
-T = st.number_input("Enter value for Temperature in K: ",value=2.72)
+T = st.number_input("Enter value for Temperature : ",value=2.72)
 B = st.number_input("Enter value for Magnetic Field: ",value=2.72)
 l = st.number_input("Enter value for L: ",value=2.72)
 s = st.number_input("Enter value for C3: ",value=2.72)
+
+#Programme Calculations---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------X
 
 def findc(s,l,B):
   y = 3-p
