@@ -16,12 +16,12 @@ st.title("Inverse Compton Spectra for Single Scattering")
 st.header("Black Body Radiation Condition")
 
 st.sidebar.write("input values")
-p = st.number_input("Enter value for Momentum: ",value=2.5)
-E = st.number_input("Enter value for Energy of the Seed Photon: ",value=2.72)
-T = st.number_input("Enter value for Temperature : ",value=2.72)
-B = st.number_input("Enter value for Magnetic Field: ",value=2.72)
-l = st.number_input("Enter value for L: ",value=2.72)
-s = st.number_input("Enter value for C3: ",value=2.72)
+p = st.sidebar.number_input("Enter value for Momentum: ",value=2.5)
+E = st.sidebar.number_input("Enter value for Energy of the Seed Photon: ",value=2.72)
+T = st.sidebar.number_input("Enter value for Temperature : ",value=2.72)
+B = st.sidebar.number_input("Enter value for Magnetic Field: ",value=2.72)
+l = st.sidebar.number_input("Enter value for L: ",value=2.72)
+s = st.sidebar.number_input("Enter value for C3: ",value=2.72)
 
 #Programme Calculations---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------X
 
