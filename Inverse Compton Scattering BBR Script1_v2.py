@@ -13,7 +13,7 @@ m = 9*(10**(-31))
 #Webapp Layout------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------X
 
 st.title("Inverse Compton Spectra for Single Scattering")
-st.header("Black Body Radiation Condition)
+st.header("Black Body Radiation Condition")
 
 st.sidebar.write("input values")
 p = st.number_input("Enter value for Momentum: ",value=2.5)
