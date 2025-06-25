@@ -14,8 +14,6 @@ m = 9*(10**(-31))
 
 st.title("Inverse Compton Spectra for Single Scattering")
 st.header("Black Body Radiation Condition")
-st.write(" ")
-st.header("Power Law Condition")
 
 st.sidebar.write("input values")
 p = st.sidebar.number_input("Enter value for Momentum: ",value=2.5)
@@ -64,3 +62,6 @@ def vol_emmissivity(p,E,T):
 
 value=vol_emmissivity(p,E,T)
 st.info(f"Volume Emmissivity is {value:e} Js-1KeV-1K-1")
+
+st.write(" ")
+st.header("Power Law Condition")
