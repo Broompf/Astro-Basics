@@ -2,13 +2,14 @@ import streamlit as st
 import sympy as sym
 #Programme Conditionals---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------X
 #constants
-h = 6.626 * (10**(-34))
-L = 2.99 * (10**8)
+h = 6.626e-34
+L = 2.99e8
 k = 1.38
-r = 2.817 * (10**(-15))
+r = 2.817e-15
 P = 10
 Q = 10**5
-m = 9*(10**(-31))
+m = 9e-31
+s = 2.3676e12
 
 #Webapp Layout------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------X
 
@@ -21,11 +22,10 @@ E = st.sidebar.number_input("Enter value for Energy of the Seed Photon: ",value=
 T = st.sidebar.number_input("Enter value for Temperature : ",value=2.72)
 B = st.sidebar.number_input("Enter value for Magnetic Field: ",value=2.72)
 l = st.sidebar.number_input("Enter value for L: ",value=2.72)
-s = st.sidebar.number_input("Enter value for C3: ",value=2.72)
 
 #Programme Calculations---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------X
 
-def findc(s,l,B):
+def findc(l,B):
   y = 3-p
   G = (P**y) - (Q**y)
   v = m*(L**2)
