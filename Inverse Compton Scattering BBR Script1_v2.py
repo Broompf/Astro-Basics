@@ -14,6 +14,8 @@ m = 9*(10**(-31))
 
 st.title("Inverse Compton Spectra for Single Scattering")
 st.header("Black Body Radiation Condition")
+st.write(" ")
+st.header("Power Law Condition")
 
 st.sidebar.write("input values")
 p = st.sidebar.number_input("Enter value for Momentum: ",value=2.5)
