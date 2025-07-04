@@ -1,5 +1,6 @@
 import streamlit as st
 import sympy as sym
+import numpy as np
 #Programme Conditionals---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------X
 #constants
 h = 6.626e-34
@@ -23,7 +24,14 @@ T = st.sidebar.number_input("Enter value for Temperature : ",value=2.72)
 B = st.sidebar.number_input("Enter value for Magnetic Field: ",value=2.72)
 l = st.sidebar.number_input("Enter value for L: ",value=2.72)
 
+lower_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=1)
+upper_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=100)
+
 #Programme Calculations---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------X
+def rangeE(l,u):
+  return np.linspace(l,u+1)
+liste= rangeE(lower_E,upper_E)
+st.info(f" length of e {len(liste)}")
 
 def findc(l,B):
   y = 3-p
