@@ -28,7 +28,7 @@ lower_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value
 upper_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=100)
 
 #Programme Calculations---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------X
-def rangeE(l,u):
+def rangeE(float(l),float(u)):
   l=[]
   for i in range(l,u+1):
     l.append(i)
