@@ -31,7 +31,7 @@ upper_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value
 def rangeE(l,u):
   liste=[]
   st.write(f" l = {l} {type(l)}")
-  for i in range(l,u):
+  for i in range(l,u + 1):
     liste.append(i)
   return liste
 liste= rangeE(lower_E,upper_E)
