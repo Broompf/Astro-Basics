@@ -35,7 +35,7 @@ def rangeE(l,u):
     liste.append(i)
   return liste
 liste= rangeE(lower_E,upper_E)
-st.info(f" length of e {len(liste)}, first term = {liste[0]}, last term = {liste[len(liste)-1]}")
+#st.info(f" length of e {len(liste)}, first term = {liste[0]}, last term = {liste[len(liste)-1]}")
 
 def findc(l,B):
   y = 3-p
