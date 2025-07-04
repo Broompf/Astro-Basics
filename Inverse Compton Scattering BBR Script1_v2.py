@@ -29,9 +29,12 @@ upper_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value
 
 #Programme Calculations---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------X
 def rangeE(l,u):
-  return np.linspace(l,u+1)
+  l=[]
+  for i in range(l,u+1):
+    l.append(i)
+  return l
 liste= rangeE(lower_E,upper_E)
-st.info(f" length of e {len(liste)}")
+st.info(f" length of e {len(liste)}, first term = {liste[0]}, last term = {liste[len(liste)]}")
 
 def findc(l,B):
   y = 3-p
