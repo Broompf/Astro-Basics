@@ -81,6 +81,9 @@ st.sidebar.write("**columns should be named 'Epsilon', 'V_Epsilon'")
 if uploaded_file is None:
     st.sidebar.write("using sample dataset. upload file and provide asked values to process other dataset")
     E,V = createdata('Sample.txt')
+    st.write("Epsilon List:", E)
+    st.write("V_Epsilon List:", V)
+
 if uploaded_file is not None:
     E,V = createdata(uploaded_file)
   
@@ -186,8 +189,6 @@ st.dataframe(data, use_container_width=True)
 
 plot_it(liste, final, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
 
-st.write("Epsilon List:", E)
-st.write("V_Epsilon List:", V)
 
 
 
