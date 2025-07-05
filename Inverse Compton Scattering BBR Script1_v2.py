@@ -151,8 +151,8 @@ def plot_it(liste,final,x_label,y_label,title):
 
 P1 = Const1(p)  # Call the function to get P1
 
-E = np.array(E, dtype=float)
-V = np.array(V, dtype=float)
+#E = np.array(E, dtype=float)
+#V = np.array(V, dtype=float)
 
 P2 = simpsons_one_third(E, V, p)
 
