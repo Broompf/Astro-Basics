@@ -155,15 +155,6 @@ data = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final})
 data["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
 data["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
 
-#Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-st.title("Inverse Compton Spectra for Single Scattering")
-st.header("Black Body Radiation Condition")
-
-st.pyplot(plt)
-st.write ("")
-st.dataframe(data, use_container_width=True)
-
-
 #Graph--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def plot_it(liste,final,x_label,y_label,title):
     plt.figure(figsize=(10, 6))
@@ -181,6 +172,16 @@ def plot_it(liste,final,x_label,y_label,title):
     plt.legend()
 
 plot_it(liste, final, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
+
+#Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+st.title("Inverse Compton Spectra for Single Scattering")
+st.header("Black Body Radiation Condition")
+
+st.pyplot(plt)
+st.write ("")
+st.dataframe(data, use_container_width=True)
+
+
 
 
 
