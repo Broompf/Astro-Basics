@@ -150,10 +150,7 @@ def plot_it(liste,final,x_label,y_label,title):
 #Defining the constant terms as a single term
 
 P1 = Const1(p)  # Call the function to get P1
-# Interpolate to uniform grid
-E = np.array(E, dtype=float)
 
-# Safe to call Simpson's Rule
 P2 = simpsons_one_third(E, V, p)
 
 #st.write(f"P1: {P1}")
