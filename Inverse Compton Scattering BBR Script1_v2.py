@@ -129,6 +129,8 @@ liste= rangeE(lower_E,upper_E)
 #Calculating Volume emissivity--------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Defining the constant terms as a single term
 
+P1 = Const1(p)  # Call the function to get P1
+P2 = simpsons_one_third(E, V, p)  # Call Simpson's Rule
 Constt = (P1)*(P2)
 
 #Obtaining the final result for volume emissivity in Js^-1KeV^-1K^-1
