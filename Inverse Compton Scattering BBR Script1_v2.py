@@ -130,18 +130,19 @@ liste= rangeE(lower_E,upper_E)
 #Defining the constant terms as a single term
 
 P1 = Const1(p)  # Call the function to get P1
-# Prepare data
 # Interpolate to uniform grid
 E_uniform = np.linspace(E.min(), E.max(), len(E))
 V_uniform = np.interp(E_uniform, E, V)
 
-if len(E) % 2 == 0:
-    st.warning("Trimming one data point to apply Simpson's 1/3rd rule.")
-    E = E[:-1]
-    V = V[:-1]
+# Trim to odd length
+if len(E_uniform) % 2 == 0:
+    st.warning("Trimming last data point after interpolation to apply Simpson's rule.")
+    E_uniform = E_uniform[:-1]
+    V_uniform = V_uniform[:-1]
 
-# Run integration
-P2 = simpsons_one_third(E, V, p) 
+# Safe to call Simpson's Rule
+P2 = simpsons_one_third(E_uniform, V_uniform, p)
+
 Constt = (P1)*(P2)
 
 #Obtaining the final result for volume emissivity in Js^-1KeV^-1K^-1
