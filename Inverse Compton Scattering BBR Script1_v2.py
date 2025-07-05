@@ -30,7 +30,7 @@ def findc(q,B,p):
   return c
 
 def Const1 (p):
-     a = p + 3
+    a = p + 3
     #print(f"a={a}")                                                        
     b = (p + 5) / 2
     #print(f"b={b}")  
