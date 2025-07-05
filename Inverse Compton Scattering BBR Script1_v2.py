@@ -151,17 +151,10 @@ def plot_it(liste,final,x_label,y_label,title):
 
 P1 = Const1(p)  # Call the function to get P1
 # Interpolate to uniform grid
-E_uniform = np.linspace(E.min(), E.max(), len(E))
-V_uniform = np.interp(E_uniform, E, V)
-
-# Trim to odd length
-if len(E_uniform) % 2 == 0:
-    st.warning("Trimming last data point after interpolation to apply Simpson's rule.")
-    E_uniform = E_uniform[:-1]
-    V_uniform = V_uniform[:-1]
+E = np.array(E, dtype=float)
 
 # Safe to call Simpson's Rule
-P2 = simpsons_one_third(E_uniform, V_uniform, p)
+P2 = simpsons_one_third(E, V, p)
 
 #st.write(f"P1: {P1}")
 st.write(f"P2: {P2}")
