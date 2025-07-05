@@ -45,16 +45,7 @@ def Const1 (p):
 
 #Defining the Integral V(Epsilon)Epsilon^(p-1/2) i.e. Constant P2---------------------------------------------------------------------------------------------------------------------------
 
-# File uploader
 
-uploaded_file = st.sidebar.file_uploader("Choose a text file", type="txt")
-st.sidebar.write("**columns should be named 'Epsilon', 'V_Epsilon'")
-#data collection and unit correction
-if uploaded_file is None:
-    st.sidebar.write("using sample dataset. upload file and provide asked values to process other dataset")
-    E,V = createdata('')
-if uploaded_file is not None:
-    E,V = createdata(uploaded_file)
 
 # Extracting data from the Uploaded file
 
@@ -71,7 +62,17 @@ def createdata(file):
     
     return E,V
 
+# File uploader
 
+uploaded_file = st.sidebar.file_uploader("Choose a text file", type="txt")
+st.sidebar.write("**columns should be named 'Epsilon', 'V_Epsilon'")
+#data collection and unit correction
+if uploaded_file is None:
+    st.sidebar.write("using sample dataset. upload file and provide asked values to process other dataset")
+    E,V = createdata('')
+if uploaded_file is not None:
+    E,V = createdata(uploaded_file)
+  
 
 # -- Simpson's 1/3rd Rule Function --
 def simpsons_one_third(E, V, p):
