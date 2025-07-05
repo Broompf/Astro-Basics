@@ -101,6 +101,7 @@ def simpsons_one_third(E, V, p):
     if n % 2 != 0:
         raise ValueError("Simpson's rule requires an even number of intervals (odd number of points).")
 
+    St.write(type(E[1]))
     h = E[1] - E[0]
     if not np.allclose(np.diff(E), h, rtol=1e-5, atol=1e-8):
         raise ValueError("Epsilon values must be equally spaced.")
