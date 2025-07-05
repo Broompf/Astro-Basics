@@ -31,10 +31,10 @@ upper_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value
 
 def findc(q,B,p):
   y = 3-p
-  G = (P**y) - (Q**y)
+  G = (R**y) - (Q**y)
   v = m*(L**2)
 
-  N = (q/(s*(B**2))*(v**y))*(y/((Q**y)-(P**y)))
+  N = (q/(s*(B**2))*(v**y))*(y/((Q**y)-(R**y)))
 
   c = (N*(v**(-p)))
   return c
