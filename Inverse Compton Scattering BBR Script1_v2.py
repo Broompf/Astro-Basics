@@ -124,7 +124,7 @@ Constt = P1*P2
 final = [(Constt*((i**(-x)) for i in liste))*(1.6*(10**(-16)))]
 
 #Graph--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-def plot_it(liste,final,"Epsilon1","Volume Emmissivity","",logscale=False):
+def plot_it(liste,final,'Epsilon1','Volume Emmissivity','',logscale=False):
     plt.figure(figsize=(10, 6))
     
     plt.xlabel(x_label)  # Set the x-axis label
