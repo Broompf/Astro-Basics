@@ -142,8 +142,6 @@ def plot_it(liste,final,x_label,y_label,title):
     plt.grid(True)
     plt.legend()
 
-plot_it(liste, final, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
-
 
 #Calculating Volume emissivity--------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Defining the constant terms as a single term
@@ -186,7 +184,7 @@ st.header("Black Body Radiation Condition")
 st.write ("")
 st.dataframe(data, use_container_width=True)
 
-
+plot_it(liste, final, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
 
 
 
