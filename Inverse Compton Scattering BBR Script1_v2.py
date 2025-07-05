@@ -124,7 +124,7 @@ Constt = P1*P2
 final = [(Constt*((i**(-x)) for i in liste))*(1.6*(10**(-16)))]
 
 #Graph--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-def plot_it(liste,final,'Epsilon1','Volume Emmissivity','',logscale=False):
+def plot_it(liste,final,x_label,y_label,title):
     plt.figure(figsize=(10, 6))
     
     plt.xlabel(x_label)  # Set the x-axis label
@@ -132,11 +132,14 @@ def plot_it(liste,final,'Epsilon1','Volume Emmissivity','',logscale=False):
     
     plt.plot(liste, final, color='grey', alpha=0.5)  # Connect points with a line
     plt.title(title)
+    logscale=st.toggle("Show Graph in logscale", value=True)
     if logscale==True:
         plt.xscale('log')
         plt.yscale('log')
     plt.grid(True)
     plt.legend()
+
+plot_it(liste, final, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
 
 #Table of Dataset---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
