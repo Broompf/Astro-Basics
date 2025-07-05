@@ -186,6 +186,8 @@ st.dataframe(data, use_container_width=True)
 
 plot_it(liste, final, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
 
+st.write("Epsilon List:", Epsilon)
+st.write("V_Epsilon List:", V_Epsilon)
 
 
 
