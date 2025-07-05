@@ -160,7 +160,7 @@ if len(E_uniform) % 2 == 0:
 # Safe to call Simpson's Rule
 P2 = simpsons_one_third(E_uniform, V_uniform, p)
 
-st.write(f"P1: {P1}")
+#st.write(f"P1: {P1}")
 st.write(f"P2: {P2}")
          
 Constt = (P1)*(P2)
