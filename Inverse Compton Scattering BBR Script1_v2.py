@@ -126,44 +126,6 @@ def rangeE(l,u):
 liste= rangeE(lower_E,upper_E)
 #st.info(f" length of e {len(liste)}, first term = {liste[0]}, last term = {liste[len(liste)-1]}")
 
-#Calculating Volume emissivity--------------------------------------------------------------------------------------------------------------------------------------------------------------
-#Defining the constant terms as a single term
-
-P1 = Const1(p)  # Call the function to get P1
-# Interpolate to uniform grid
-E_uniform = np.linspace(E.min(), E.max(), len(E))
-V_uniform = np.interp(E_uniform, E, V)
-
-# Trim to odd length
-if len(E_uniform) % 2 == 0:
-    st.warning("Trimming last data point after interpolation to apply Simpson's rule.")
-    E_uniform = E_uniform[:-1]
-    V_uniform = V_uniform[:-1]
-
-# Safe to call Simpson's Rule
-P2 = simpsons_one_third(E_uniform, V_uniform, p)
-
-Constt = (P1)*(P2)
-
-#Obtaining the final result for volume emissivity in Js^-1KeV^-1K^-1
-
-final = [Constt * (i**(-((p-1)/2))) * 1.6e-16 for i in liste]
-
-#Table of Dataset---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-data = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final})
-data["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
-data["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
-
-
-#Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-st.title("Inverse Compton Spectra for Single Scattering")
-st.header("Black Body Radiation Condition")
-
-st.pyplot(plt)
-st.write ("")
-st.dataframe(data, use_container_width=True)
-
 #Graph--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def plot_it(liste,final,x_label,y_label,title):
     plt.figure(figsize=(10, 6))
@@ -181,6 +143,49 @@ def plot_it(liste,final,x_label,y_label,title):
     plt.legend()
 
 plot_it(liste, final, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
+
+
+#Calculating Volume emissivity--------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Defining the constant terms as a single term
+
+P1 = Const1(p)  # Call the function to get P1
+# Interpolate to uniform grid
+E_uniform = np.linspace(E.min(), E.max(), len(E))
+V_uniform = np.interp(E_uniform, E, V)
+
+# Trim to odd length
+if len(E_uniform) % 2 == 0:
+    st.warning("Trimming last data point after interpolation to apply Simpson's rule.")
+    E_uniform = E_uniform[:-1]
+    V_uniform = V_uniform[:-1]
+
+# Safe to call Simpson's Rule
+P2 = simpsons_one_third(E_uniform, V_uniform, p)
+
+st.write(f"P1={P1}"
+st.write(f"P2={P2}"
+         
+Constt = (P1)*(P2)
+st.write(f"Constt={Constt}"
+
+#Obtaining the final result for volume emissivity in Js^-1KeV^-1K^-1
+
+final = [Constt * (i**(-((p-1)/2))) * 1.6e-16 for i in liste]
+
+#Table of Dataset---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+data = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final})
+data["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
+data["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
+
+
+#Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+st.title("Inverse Compton Spectra for Single Scattering")
+st.header("Black Body Radiation Condition")
+
+st.write ("")
+st.dataframe(data, use_container_width=True)
+
 
 
 
