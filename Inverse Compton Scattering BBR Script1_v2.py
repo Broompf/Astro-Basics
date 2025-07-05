@@ -100,10 +100,10 @@ def simpsons_one_third(E, V, p):
     if n % 2 != 0:
         raise ValueError("Simpson's rule requires an even number of intervals (odd number of points).")
 
-    st.write("Epsilon List:", E)
-    st.write("V_Epsilon List:", V)
+   # st.write("Epsilon List:", E)
+    #st.write("V_Epsilon List:", V)
    
-    st.success(f" E[1] = {E[1]} with type {type(E[1])}")
+    #st.success(f" E[1] = {E[1]} with type {type(E[1])}")
     
     h = E[1] - E[0]
     if not np.allclose(np.diff(E), h, rtol=1e-5, atol=1e-8):
@@ -148,7 +148,7 @@ def plot_it(liste,final,x_label,y_label,title):
         plt.yscale('log')
     plt.grid(True)
     plt.legend()
-
+    st.pyplot(plt)
 
 #Calculating Volume emissivity--------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Defining the constant terms as a single term
@@ -161,10 +161,10 @@ P1 = Const1(p)  # Call the function to get P1
 P2 = simpsons_one_third(E, V, p)
 
 #st.write(f"P1: {P1}")
-st.write(f"P2: {P2}")
+#st.write(f"P2: {P2}")
          
 Constt = (P1)*(P2)
-st.write(f"Constt={Constt}")
+#st.write(f"Constt={Constt}")
 
 #Obtaining the final result for volume emissivity in Js^-1KeV^-1K^-1
 
