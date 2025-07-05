@@ -44,7 +44,7 @@ def Const1 (p):
     #print(f"a={a}")                                                        
     b = (p + 5) / 2
     #print(f"b={b}")  
-    c = findc(l,B)
+    c = findc(q,B,p)
     x = (p - 1) / 2
     #print(f"x={x}")                                                        
     A = ((p**2) + 4*p + 11) / ((a**2)*(2*b)*(p + 1))
