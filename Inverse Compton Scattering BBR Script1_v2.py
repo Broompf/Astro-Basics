@@ -102,7 +102,7 @@ def simpsons_one_third(E, V, p):
 
     st.write("Epsilon List:", E)
     st.write("V_Epsilon List:", V)
-    st.write(type(E[1]))
+    st.success(f” E[1] = {E[1]} with type {type(E[1])}
     
     h = E[1] - E[0]
     if not np.allclose(np.diff(E), h, rtol=1e-5, atol=1e-8):
