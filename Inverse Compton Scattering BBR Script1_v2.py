@@ -29,7 +29,7 @@ def findc(q,B,p):
   c = (N*(v**(-p)))
   return c
 
-def Const1 (p)
+def Const1 (p):
      a = p + 3
     #print(f"a={a}")                                                        
     b = (p + 5) / 2
