@@ -1,4 +1,4 @@
-# Epsilon          V(Epsilon)
+# Epsilon          V_Epsilon
  1.000e+04         1.000e+00
  5.000e+04         9.753e-01
  9.000e+04         9.512e-01
