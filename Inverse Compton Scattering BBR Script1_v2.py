@@ -81,8 +81,7 @@ st.sidebar.write("**columns should be named 'Epsilon', 'V_Epsilon'")
 if uploaded_file is None:
     st.sidebar.write("using sample dataset. upload file and provide asked values to process other dataset")
     E,V = createdata('Sample.txt')
-    st.write("Epsilon List:", E)
-    st.write("V_Epsilon List:", V)
+   
 
 if uploaded_file is not None:
     E,V = createdata(uploaded_file)
@@ -101,6 +100,8 @@ def simpsons_one_third(E, V, p):
     if n % 2 != 0:
         raise ValueError("Simpson's rule requires an even number of intervals (odd number of points).")
 
+    st.write("Epsilon List:", E)
+    st.write("V_Epsilon List:", V)
     st.write(type(E[1]))
     
     h = E[1] - E[0]
