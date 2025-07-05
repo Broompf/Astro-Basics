@@ -149,6 +149,12 @@ Constt = (P1)*(P2)
 
 final = [Constt * (i**(-((p-1)/2))) * 1.6e-16 for i in liste]
 
+#Table of Dataset---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+data = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final})
+data["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
+data["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
+
 #Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 st.title("Inverse Compton Spectra for Single Scattering")
 st.header("Black Body Radiation Condition")
@@ -176,11 +182,6 @@ def plot_it(liste,final,x_label,y_label,title):
 
 plot_it(liste, final, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
 
-#Table of Dataset---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-data = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final})
-data["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
-data["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
 
 
 
