@@ -2,7 +2,7 @@
 import streamlit as st
 import sympy as sym
 import pandas as pd
-import matplotlib.pyplot as plt
+import matplotlib as plt
 import numpy as np
 
 #constants----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
