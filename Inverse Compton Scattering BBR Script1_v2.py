@@ -69,7 +69,7 @@ st.sidebar.write("**columns should be named 'Epsilon', 'V_Epsilon'")
 #data collection and unit correction
 if uploaded_file is None:
     st.sidebar.write("using sample dataset. upload file and provide asked values to process other dataset")
-    E,V = createdata('')
+    E,V = createdata('Sample.txt')
 if uploaded_file is not None:
     E,V = createdata(uploaded_file)
   
