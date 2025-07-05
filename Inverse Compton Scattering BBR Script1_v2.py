@@ -124,6 +124,24 @@ Constt = P1*P2
 
 final = [(Constt*((i**(-x)) for i in liste))*(1.6*(10**(-16)))]
 
+#Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+st.title("Inverse Compton Spectra for Single Scattering")
+st.header("Black Body Radiation Condition")
+
+st.pyplot(plt)
+st.write ("")
+st.dataframe(data, use_container_width=True)
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+st.sidebar.write("input values")
+p = st.sidebar.number_input("Enter value for Momentum: ",value=2.5)
+B = st.sidebar.number_input("Enter value for Magnetic Field: ",value=2.72)
+q = st.sidebar.number_input("Enter value for L: ",value=2.72)
+st.sidebar.write("Upload a text file containing data of curve of V(Epsilon) against Epsilon")
+lower_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=1)
+upper_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=100)
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 #Graph--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def plot_it(liste,final,x_label,y_label,title):
     plt.figure(figsize=(10, 6))
@@ -148,23 +166,5 @@ data = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final})
 data["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
 data["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
 
-#Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-st.sidebar.write("input values")
-p = st.sidebar.number_input("Enter value for Momentum: ",value=2.5)
-B = st.sidebar.number_input("Enter value for Magnetic Field: ",value=2.72)
-q = st.sidebar.number_input("Enter value for L: ",value=2.72)
-st.sidebar.write("Upload a text file containing data of curve of V(Epsilon) against Epsilon")
-
-lower_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=1)
-upper_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=100)
-
-#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-st.title("Inverse Compton Spectra for Single Scattering")
-st.header("Black Body Radiation Condition")
-
-st.pyplot(plt)
-st.write ("")
-st.dataframe(data, use_container_width=True)
 
 
