@@ -130,7 +130,14 @@ liste= rangeE(lower_E,upper_E)
 #Defining the constant terms as a single term
 
 P1 = Const1(p)  # Call the function to get P1
-P2 = simpsons_one_third(E, V, p)  # Call Simpson's Rule
+# Prepare data
+if len(E) % 2 == 0:
+    st.warning("Trimming one data point to apply Simpson's 1/3rd rule.")
+    E = E[:-1]
+    V = V[:-1]
+
+# Run integration
+P2 = simpsons_one_third(E, V, p) 
 Constt = (P1)*(P2)
 
 #Obtaining the final result for volume emissivity in Js^-1KeV^-1K^-1
