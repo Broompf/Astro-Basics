@@ -147,7 +147,7 @@ Constt = (P1)*(P2)
 
 #Obtaining the final result for volume emissivity in Js^-1KeV^-1K^-1
 
-final = [Constt * (i**(-x)) * 1.6e-16 for i in liste]
+final = [Constt * (i**(-((p-1)/2))) * 1.6e-16 for i in liste]
 
 #Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 st.title("Inverse Compton Spectra for Single Scattering")
