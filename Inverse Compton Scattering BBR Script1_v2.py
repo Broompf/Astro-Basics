@@ -110,8 +110,8 @@ def simpsons_one_third(E, V, p):
         raise ValueError("Epsilon values must be equally spaced.")
 
     # Transform the function as V(E) * E^((p-1)/2)
-    transformed = V * E**((p - 1) / 2)
-
+    transformed = (V * E**((p - 1) / 2)).to_numpy()
+  
     # Apply Simpson's Rule
     result = transformed[0] + transformed[-1] + \
              4 * sum(transformed[1:n:2]) + \
