@@ -108,7 +108,7 @@ def rangeE(l,u):
     liste=[]
 #  st.write(f" l = {l} {type(l)}")
     for i in range(l,u + 1):
-    liste.append(i)
+        liste.append(i)
 
     return liste
 liste= rangeE(lower_E,upper_E)
