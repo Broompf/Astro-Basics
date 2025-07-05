@@ -102,6 +102,8 @@ def simpsons_one_third(E, V, p):
 
     st.write("Epsilon List:", E)
     st.write("V_Epsilon List:", V)
+    E = [ float(i) for i in E] 
+
     st.success(f" E[1] = {E[1]} with type {type(E[1])}")
     
     h = E[1] - E[0]
