@@ -131,6 +131,10 @@ liste= rangeE(lower_E,upper_E)
 
 P1 = Const1(p)  # Call the function to get P1
 # Prepare data
+# Interpolate to uniform grid
+E_uniform = np.linspace(E.min(), E.max(), len(E))
+V_uniform = np.interp(E_uniform, E, V)
+
 if len(E) % 2 == 0:
     st.warning("Trimming one data point to apply Simpson's 1/3rd rule.")
     E = E[:-1]
