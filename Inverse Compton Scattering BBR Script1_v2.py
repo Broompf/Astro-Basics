@@ -18,7 +18,6 @@ st.sidebar.write("input values")
 p = st.sidebar.number_input("Enter value for Momentum: ",value=2.5)
 B = st.sidebar.number_input("Enter value for Magnetic Field: ",value=2.72)
 q = st.sidebar.number_input("Enter value for L: ",value=2.72)
-st.sidebar.write("Upload a text file containing data of curve of V(Epsilon) against Epsilon")
 lower_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=1)
 upper_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=100)
 
@@ -75,6 +74,7 @@ def createdata(file):
 
 # File uploader
 
+st.sidebar.write("Upload a text file containing data of curve of V(Epsilon) against Epsilon")
 uploaded_file = st.sidebar.file_uploader("Choose a text file", type="txt")
 st.sidebar.write("**columns should be named 'Epsilon', 'V_Epsilon'")
 #data collection and unit correction
@@ -129,7 +129,7 @@ liste= rangeE(lower_E,upper_E)
 #Calculating Volume emissivity--------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Defining the constant terms as a single term
 
-Constt = P1*P2
+Constt = (P1)*(P2)
 
 #Obtaining the final result for volume emissivity in Js^-1KeV^-1K^-1
 
