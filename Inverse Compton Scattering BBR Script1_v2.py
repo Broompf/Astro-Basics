@@ -178,7 +178,7 @@ def plot_it(liste,final2,x_label,y_label,title):
     
     plt.plot(liste, final2, color='grey', alpha=0.5)  # Connect points with a line
     plt.title(title)
-    logscale=st.toggle("Show Graph in logscale", value=True)
+    logscale= True #st.toggle("Show Graph in logscale", value=True)
     if logscale:
         plt.xscale('log')
         plt.yscale('log')
