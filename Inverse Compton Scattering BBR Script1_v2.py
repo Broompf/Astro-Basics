@@ -219,11 +219,11 @@ final2 = [Constt2 * (i**(-((p-1)/2))) * 1.6e-16 for i in liste]
 
 data = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final})
 data["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
-data["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
+#data["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
 
 data2 = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final2})
 data2["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
-data2["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
+#data2["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
 
 
 #Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
