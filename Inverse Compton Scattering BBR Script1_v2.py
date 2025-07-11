@@ -12,12 +12,16 @@ R = 10                   #Lorentz Function Gamma 1
 Q = 10**5                #Lorentz Function Gamma 2
 m = 9e-31                #Mass of Electron
 s = 2.3676e12            #Constant C3
+h = 6.626e-34            #Planck's Constant
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 st.sidebar.write("input values")
 p = st.sidebar.number_input("Enter value for Momentum: ",value=2.5)
 B = st.sidebar.number_input("Enter value for Magnetic Field: ",value=2.72)
 q = st.sidebar.number_input("Enter value for L: ",value=2.72)
+alpha = st.sidebar.number_input("Enter value for alpha"value=2.72)
+F = st.sidebar.number_input("Enter value for Fvo"value=2.72)
+V = st.sidebar.number_input("Enter value for vo"value=2.72)
 lower_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=1)
 upper_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=100)
 
@@ -121,6 +125,25 @@ def simpsons_one_third(E, V, p):
     
     return P2
 
+def findo (F,V,alpha):
+    o = (F*(V**alpha)) / (L*(h**(1-alpha)))
+    return o
+
+def int2(E, p, alpha)
+    Ei = E.iloc[0]
+    Ef = E.iloc[-1]
+   
+    if alpha == (p-1)/2
+        if Ei > 0:
+            diff = np.log(Ef) - np.log(Ei)
+        else:
+            raise ValueError("Logarithm undefined for non-positive values.")
+      
+    else:
+        diff = ((Ef**(((p-1)/2)-alpha))/(((p-1)/2)-alpha)) - ((Ef**(((p-1)/2)-alpha))/(((p-1)/2)-alpha))
+        
+    return diff
+
 #Defining for Epsilon1 list-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def rangeE(l,u):
@@ -134,6 +157,7 @@ liste= rangeE(lower_E,upper_E)
 #st.info(f" length of e {len(liste)}, first term = {liste[0]}, last term = {liste[len(liste)-1]}")
 
 #Graph--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Blackbody Radiation Graph------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def plot_it(liste,final,x_label,y_label,title):
     plt.figure(figsize=(10, 6))
     
@@ -141,6 +165,22 @@ def plot_it(liste,final,x_label,y_label,title):
     plt.ylabel(y_label)  # Set the y-axis label
     
     plt.plot(liste, final, color='grey', alpha=0.5)  # Connect points with a line
+    plt.title(title)
+    logscale=st.toggle("Show Graph in logscale", value=True)
+    if logscale==True:
+        plt.xscale('log')
+        plt.yscale('log')
+    plt.grid(True)
+    plt.legend()
+    st.pyplot(plt)
+#Power Law Graph----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def plot_it(liste,final2,x_label,y_label,title):
+    plt.figure(figsize=(10, 6))
+    
+    plt.xlabel(x_label)  # Set the x-axis label
+    plt.ylabel(y_label)  # Set the y-axis label
+    
+    plt.plot(liste, final2, color='grey', alpha=0.5)  # Connect points with a line
     plt.title(title)
     logscale=st.toggle("Show Graph in logscale", value=True)
     if logscale==True:
@@ -160,15 +200,20 @@ P1 = Const1(p)  # Call the function to get P1
 
 P2 = simpsons_one_third(E, V, p)
 
+diff = int2(E, p, alpha)
+
 #st.write(f"P1: {P1}")
 #st.write(f"P2: {P2}")
          
-Constt = (P1)*(P2)
+Constt1 = (P1)*(P2)
+
+Constt2 = (P1)*(diff)
 #st.write(f"Constt={Constt}")
 
 #Obtaining the final result for volume emissivity in Js^-1KeV^-1K^-1
 
-final = [Constt * (i**(-((p-1)/2))) * 1.6e-16 for i in liste]
+final = [Constt1 * (i**(-((p-1)/2))) * 1.6e-16 for i in liste]
+final2 = [Constt2 * (i**(-((p-1)/2))) * 1.6e-16 for i in liste]
 
 #Table of Dataset---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -176,15 +221,24 @@ data = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final})
 data["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
 data["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
 
+data2 = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final2})
+data2["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
+data2["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
+
 
 #Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 st.title("Inverse Compton Spectra for Single Scattering")
-st.header("Black Body Radiation Condition")
+st.header("Black Body Condition")
 
 st.write ("")
 st.dataframe(data, use_container_width=True)
-
 plot_it(liste, final, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
+
+st.write ("")
+st.header ("Power Law Distribution")
+st.write ("")
+st.dataframe (data2, use_container_width=True)
+plot_it(liste, final2, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
 
 
 
