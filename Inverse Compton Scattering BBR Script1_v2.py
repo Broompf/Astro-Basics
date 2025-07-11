@@ -218,14 +218,18 @@ st.success(liste)
 #Table of Dataset---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 data = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final})
+
+data2 = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final2})
+
+st.warning (data["Epsilon"][~data["Epsilon"].apply(lambda x: isinstance(x, (int, float)) and pd.notnull(x))])
+
+
+data2["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
+data2["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
 data["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
 data["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
 
-data2 = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final2})
-data2["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
-data2["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
 
-st.warning (data["Epsilon"][~data["Epsilon"].apply(lambda x: isinstance(x, (int, float)) and pd.notnull(x))])
 
 
 #Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
