@@ -202,12 +202,14 @@ P2 = simpsons_one_third(E, V, p)
 
 diff = int2(E, p, alpha)
 
+o = findo (F,V,alpha)
+
 #st.write(f"P1: {P1}")
 #st.write(f"P2: {P2}")
          
 Constt1 = (P1)*(P2)
 
-Constt2 = (P1)*(diff)
+Constt2 = (P1)*(o)*(diff)
 #st.write(f"Constt={Constt}")
 
 #Obtaining the final result for volume emissivity in Js^-1KeV^-1K^-1
