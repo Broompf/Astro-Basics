@@ -129,7 +129,7 @@ def findo (F,V,alpha):
     o = (F*(V**alpha)) / (L*(h**(1-alpha)))
     return o
 
-def int2(E, p, alpha)
+def int2(E, p, alpha):
     Ei = E.iloc[0]
     Ef = E.iloc[-1]
    
