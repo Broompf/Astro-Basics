@@ -225,6 +225,8 @@ data2 = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final2})
 data2["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
 data2["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
 
+print(data["Epsilon"][~data["Epsilon"].apply(lambda x: isinstance(x, (int, float)) and pd.notnull(x))])
+
 
 #Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 st.title("Inverse Compton Spectra for Single Scattering")
