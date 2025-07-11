@@ -133,7 +133,7 @@ def int2(E, p, alpha):
     Ei = E.iloc[0]
     Ef = E.iloc[-1]
    
-    if alpha == (p-1)/2
+    if alpha == (p-1)/2:
         if Ei > 0:
             diff = np.log(Ef) - np.log(Ei)
         else:
