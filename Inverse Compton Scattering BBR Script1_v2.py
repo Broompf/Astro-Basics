@@ -136,7 +136,7 @@ def int2(E, p, alpha):
             raise ValueError("Logarithm undefined for non-positive values.")
       
     else:
-        diff = ((Ef**(((p-1)/2)-alpha))/(((p-1)/2)-alpha)) - ((Ef**(((p-1)/2)-alpha))/(((p-1)/2)-alpha))
+        diff = ((Ef**(((p-1)/2)-alpha))/(((p-1)/2)-alpha)) - ((Ei**(((p-1)/2)-alpha))/(((p-1)/2)-alpha))
         
     return diff
 
