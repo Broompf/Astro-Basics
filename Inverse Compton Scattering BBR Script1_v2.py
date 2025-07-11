@@ -213,8 +213,8 @@ Constt2 = (P1)*(o)*(diff)
 final = [Constt1 * (i**(-((p-1)/2))) * 1.6e-16 for i in liste]
 final2 = [Constt2 * (i**(-((p-1)/2))) * 1.6e-16 for i in liste]
 
-st.info(liste[0])
-
+st.info(final2)
+st.success(liste)
 #Table of Dataset---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 data = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final})
