@@ -125,10 +125,6 @@ def simpsons_one_third(E, V, p):
     
     return P2
 
-def findo (F,V,alpha):
-    o = (F*(V**alpha)) / (L*(h**(1-alpha)))
-    return o
-
 def int2(E, p, alpha):
     Ei = E.iloc[0]
     Ef = E.iloc[-1]
@@ -202,7 +198,7 @@ P2 = simpsons_one_third(E, V, p)
 
 diff = int2(E, p, alpha)
 
-o = findo (F,V,alpha)
+o = (F*(V**alpha)) / (L*(h**(1-alpha)))
 
 #st.write(f"P1: {P1}")
 #st.write(f"P2: {P2}")
