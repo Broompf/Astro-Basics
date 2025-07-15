@@ -208,7 +208,10 @@ def plot_it(liste,final2,x_label,y_label,title):
 
 P1 = Const1(p)  # Call the function to get P1
 
-P1T = Const1T(p, T) 
+if T is not None:
+    P1T = Const1T(p, T)
+else:
+    P1T = None
 
 #E = np.array(E, dtype=float)
 #V = np.array(V, dtype=float)
