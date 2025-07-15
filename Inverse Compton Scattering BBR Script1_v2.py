@@ -260,15 +260,22 @@ data["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'
 
 #Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 st.title("Inverse Compton Spectra for Single Scattering")
+
+st.header ("Power Law Distribution")
+st.write ("")
+st.dataframe (data2, use_container_width=True)
+plot_it(liste, final2, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
+st.latex (r' \frac{dE}{dVdtd\epsilon_{1}} = \pi cr_{0}^2 CA(p)\epsilon_{1}^\frac{{-\left(p-1 \right)}}{2} \int_{}^{}d\epsilon \epsilon^\frac{{\left(p-1 \right)}}{2} v(\epsilon) ')
+'Where'
+st.latex (r' A(p) = 2^{p+3} \frac{p^2 + 4p + 11}{(p+3)^2 (p+5)(p+1)} ')
+'And'
+st.latex (r' C = N_{0}(m_{e}c^2)^{-p} ')
+
+st.write ("")
 st.header("Black Body Condition")
 
 st.write ("")
 st.dataframe(data, use_container_width=True)
 plot_it(liste, final, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
-
-st.write ("")
-st.header ("Power Law Distribution")
-st.write ("")
-st.dataframe (data2, use_container_width=True)
-plot_it(liste, final2, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
-
+'Assuming value of T is not zero'
+st.latex (r' \frac{dE}{dVdtd\epsilon_{1}} = \frac{C8\pi^2r_{0}^2}{h^3c^2} \left(kT \right)^\frac{\left( p+5 \right)}{2} F\left(p \right) \epsilon_{1}^\frac{{-\left(p-1 \right)}}{2} ')
