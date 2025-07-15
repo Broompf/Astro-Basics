@@ -45,7 +45,7 @@ def findc(q,B,p):
   c = (N*(v**(-p)))
   return c
 
-def Const1T (p, T)
+def Const1T (p, T):
     a = p + 3
     #print(f"a={a}")                                                        
     b = (p + 5) / 2
