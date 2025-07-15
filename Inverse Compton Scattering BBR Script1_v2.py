@@ -279,3 +279,10 @@ st.dataframe(data, use_container_width=True)
 plot_it(liste, final, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
 'Assuming value of T is not zero'
 st.latex (r' \frac{dE}{dVdtd\epsilon_{1}} = \frac{C8\pi^2r_{0}^2}{h^3c^2} \left(kT \right)^\frac{\left( p+5 \right)}{2} F\left(p \right) \epsilon_{1}^\frac{{-\left(p-1 \right)}}{2} ')
+
+st.markdown("""
+<div style='text-align: right;'>
+    <p><strong>By Garv Trivedi</strong></p>
+    <p><strong>under guidance of Dr. C. Konar</strong></p>
+</div>
+""", unsafe_allow_html=True)
