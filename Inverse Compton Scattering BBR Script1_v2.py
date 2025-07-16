@@ -17,12 +17,12 @@ k = 1.38e-23             #Boltzmann's Constant
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 st.sidebar.write("input values")
-p = st.sidebar.number_input("Enter value for Momentum: ",value=2.5)
-B = st.sidebar.number_input("Enter value for Magnetic Field: ",value=2.72)
+p = st.sidebar.number_input("Enter value for Electron Index: ",value=2.5)
+B = st.sidebar.number_input("Enter value for Magnetic Field in T: ",value=2.72)
 q = st.sidebar.number_input("Enter value for L: ",value=2.72)
-alpha = st.sidebar.number_input("Enter value for alpha:",value=2.72)
-F = st.sidebar.number_input("Enter value for Fvo:",value=2.72)
-v = st.sidebar.number_input("Enter value for vo:",value=2.72)
+alpha = st.sidebar.number_input("Enter value for Seed Photon Index:",value=2.72)
+F = st.sidebar.number_input("Enter value for Flux Density in W.m^-2.Hz^-1:",value=2.72)
+v = st.sidebar.number_input("Enter value for Reference Frequency in Hz:",value=2.72)
 T = st.sidebar.number_input("Enter value for Temperature:",value=None)
 lower_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=1)
 upper_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=100)
