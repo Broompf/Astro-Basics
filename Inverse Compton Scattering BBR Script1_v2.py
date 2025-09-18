@@ -20,8 +20,8 @@ p = st.sidebar.number_input("Enter value for Momentum: ",value=2.5)
 B = st.sidebar.number_input("Enter value for Magnetic Field: ",value=2.72)
 q = st.sidebar.number_input("Enter value for L: ",value=2.72)
 alpha = st.sidebar.number_input("Enter value for alpha: ",value=2.72)
-F = st.sidebar.number_input("Enter value for Fvo"value=2.72)
-V = st.sidebar.number_input("Enter value for vo"value=2.72)
+F = st.sidebar.number_input("Enter value for Fvo: ",value=2.72)
+V = st.sidebar.number_input("Enter value for vo; ",value=2.72)
 lower_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=1)
 upper_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=100)
 
@@ -239,6 +239,7 @@ st.header ("Power Law Distribution")
 st.write ("")
 st.dataframe (data2, use_container_width=True)
 plot_it(liste, final2, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
+
 
 
 
