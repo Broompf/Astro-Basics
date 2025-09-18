@@ -129,7 +129,7 @@ def findo (F,V,alpha):
     o = (F*(V**alpha)) / (L*(h**(1-alpha)))
     return o
 
-def int2(E, p, alpha)
+def int2(E, p, alpha):
     Ei = E.iloc[0]
     Ef = E.iloc[-1]
    
@@ -239,6 +239,7 @@ st.header ("Power Law Distribution")
 st.write ("")
 st.dataframe (data2, use_container_width=True)
 plot_it(liste, final2, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
+
 
 
 
