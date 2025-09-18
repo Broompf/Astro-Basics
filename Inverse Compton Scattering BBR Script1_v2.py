@@ -13,15 +13,17 @@ Q = 10**5                #Lorentz Function Gamma 2
 m = 9e-31                #Mass of Electron
 s = 2.3676e12            #Constant C3
 h = 6.626e-34            #Planck's Constant
+k = 1.38e-23             #Boltzmann's Constant
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 st.sidebar.write("input values")
-p = st.sidebar.number_input("Enter value for Momentum: ",value=2.5)
-B = st.sidebar.number_input("Enter value for Magnetic Field: ",value=2.72)
+p = st.sidebar.number_input("Enter value for Electron Index: ",value=2.5)
+B = st.sidebar.number_input("Enter value for Magnetic Field in T: ",value=2.72)
 q = st.sidebar.number_input("Enter value for L: ",value=2.72)
-alpha = st.sidebar.number_input("Enter value for alpha"value=2.72)
-F = st.sidebar.number_input("Enter value for Fvo"value=2.72)
-V = st.sidebar.number_input("Enter value for vo"value=2.72)
+alpha = st.sidebar.number_input("Enter value for Seed Photon Index:",value=2.72)
+F = st.sidebar.number_input("Enter value for Flux Density in W.m^-2.Hz^-1:",value=2.72)
+v = st.sidebar.number_input("Enter value for Reference Frequency in Hz:",value=2.72)
+T = st.sidebar.number_input("Enter value for Temperature:",value=None)
 lower_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=1)
 upper_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=100)
 
@@ -42,6 +44,21 @@ def findc(q,B,p):
 
   c = (N*(v**(-p)))
   return c
+
+def Const1T (p, T):
+    a = p + 3
+    #print(f"a={a}")                                                        
+    b = (p + 5) / 2
+    #print(f"b={b}")  
+    c = findc(q,B,p)
+    x = (p - 1) / 2
+    #print(f"x={x}")                                                        
+    A = ((p**2) + 4*p + 11) / ((a**2)*(2*b)*(p + 1))
+    i = 3.141592653589
+    f = (sym.gamma(b))*(sym.zeta(b))*A
+    P1T = (8*(i**2)*(r**2)*c*((k*T)**b)*f)/((h**3)*(L**2))
+
+    return P1T
 
 def Const1 (p):
     a = p + 3
@@ -125,22 +142,18 @@ def simpsons_one_third(E, V, p):
     
     return P2
 
-def findo (F,V,alpha):
-    o = (F*(V**alpha)) / (L*(h**(1-alpha)))
-    return o
-
-def int2(E, p, alpha)
+def int2(E, p, alpha):
     Ei = E.iloc[0]
     Ef = E.iloc[-1]
    
-    if alpha == (p-1)/2
+    if alpha == (p-1)/2:
         if Ei > 0:
             diff = np.log(Ef) - np.log(Ei)
         else:
             raise ValueError("Logarithm undefined for non-positive values.")
       
     else:
-        diff = ((Ef**(((p-1)/2)-alpha))/(((p-1)/2)-alpha)) - ((Ef**(((p-1)/2)-alpha))/(((p-1)/2)-alpha))
+        diff = ((Ef**(((p-1)/2)-alpha))/(((p-1)/2)-alpha)) - ((Ei**(((p-1)/2)-alpha))/(((p-1)/2)-alpha))
         
     return diff
 
@@ -167,7 +180,7 @@ def plot_it(liste,final,x_label,y_label,title):
     plt.plot(liste, final, color='grey', alpha=0.5)  # Connect points with a line
     plt.title(title)
     logscale=st.toggle("Show Graph in logscale", value=True)
-    if logscale==True:
+    if logscale:
         plt.xscale('log')
         plt.yscale('log')
     plt.grid(True)
@@ -182,8 +195,8 @@ def plot_it(liste,final2,x_label,y_label,title):
     
     plt.plot(liste, final2, color='grey', alpha=0.5)  # Connect points with a line
     plt.title(title)
-    logscale=st.toggle("Show Graph in logscale", value=True)
-    if logscale==True:
+    logscale= True #st.toggle("Show Graph in logscale", value=True)
+    if logscale:
         plt.xscale('log')
         plt.yscale('log')
     plt.grid(True)
@@ -195,6 +208,11 @@ def plot_it(liste,final2,x_label,y_label,title):
 
 P1 = Const1(p)  # Call the function to get P1
 
+if T is not None:
+    P1T = Const1T(p, T)
+else:
+    P1T = None
+
 #E = np.array(E, dtype=float)
 #V = np.array(V, dtype=float)
 
@@ -202,42 +220,72 @@ P2 = simpsons_one_third(E, V, p)
 
 diff = int2(E, p, alpha)
 
+o = (F*(v**alpha)) / (L*(h**(1-alpha)))
+
 #st.write(f"P1: {P1}")
 #st.write(f"P2: {P2}")
-         
-Constt1 = (P1)*(P2)
 
-Constt2 = (P1)*(diff)
+if T is None:         
+   Constt1 = (P1)*(P2)
+else:
+   Constt1 = (P1T)
+
+Constt2 = (P1)*(o)*(diff)
 #st.write(f"Constt={Constt}")
 
 #Obtaining the final result for volume emissivity in Js^-1KeV^-1K^-1
 
+
 final = [Constt1 * (i**(-((p-1)/2))) * 1.6e-16 for i in liste]
 final2 = [Constt2 * (i**(-((p-1)/2))) * 1.6e-16 for i in liste]
 
+#st.info(final2)
+#st.success(liste)
 #Table of Dataset---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 data = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final})
+
+data2 = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final2})
+
+#st.warning (data["Epsilon"][~data["Epsilon"].apply(lambda x: isinstance(x, (int, float)) and pd.notnull(x))])
+
+
+data2["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
+data2["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
 data["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
 data["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
 
-data2 = pd.DataFrame({'Epsilon': liste, 'Volume Emmissivity': final2})
-data2["Epsilon"] = data["Epsilon"].apply(lambda x: '{:.6e}'.format(x))
-data2["Volume Emmissivity"] = data["Volume Emmissivity"].apply(lambda x: '{:.6e}'.format(x))
+
 
 
 #Streamlit app layout-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 st.title("Inverse Compton Spectra for Single Scattering")
+
+st.header ("Power Law Distribution")
+st.write ("")
+st.dataframe (data2, use_container_width=True)
+plot_it(liste, final2, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
+st.latex (r' \frac{dE}{dVdtd\epsilon_{1}} = \pi cr_{0}^2 CA(p)\epsilon_{1}^\frac{{-\left(p-1 \right)}}{2} \int_{}^{}d\epsilon \epsilon^\frac{{\left(p-1 \right)}}{2} v(\epsilon) ')
+'Where'
+st.latex (r' A(p) = 2^{p+3} \frac{p^2 + 4p + 11}{(p+3)^2 (p+5)(p+1)} ')
+'And'
+st.latex (r' C = N_{0}(m_{e}c^2)^{-p} ')
+
+st.write ("")
 st.header("Black Body Condition")
 
 st.write ("")
 st.dataframe(data, use_container_width=True)
 plot_it(liste, final, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
+'Assuming value of T is not zero'
+st.latex (r' \frac{dE}{dVdtd\epsilon_{1}} = \frac{C8\pi^2r_{0}^2}{h^3c^2} \left(kT \right)^\frac{\left( p+5 \right)}{2} F\left(p \right) \epsilon_{1}^\frac{{-\left(p-1 \right)}}{2} ')
 
-st.write ("")
-st.header ("Power Law Distribution")
-st.write ("")
-st.dataframe (data2, use_container_width=True)
-plot_it(liste, final2, 'Epsilon1', 'Volume Emissivity', 'Inverse Compton Result')
+''
 
+st.markdown("""
+<div style='text-align: right;'>
+    <p><strong>By Garv Trivedi</strong></p>
+    <p><strong>under guidance of Dr. C. Konar</strong></p>
+</div>
+""", unsafe_allow_html=True)
 
