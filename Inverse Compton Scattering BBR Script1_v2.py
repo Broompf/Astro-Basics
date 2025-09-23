@@ -24,6 +24,14 @@ alpha = st.sidebar.number_input("Enter value for Seed Photon Index:",value=2.72)
 F = st.sidebar.number_input("Enter value for Flux Density in W.m^-2.Hz^-1:",value=2.72)
 v = st.sidebar.number_input("Enter value for Reference Frequency in Hz:",value=2.72)
 T = st.sidebar.number_input("Enter value for Temperature:",value=None)
+# Display LaTeX label
+st.sidebar.latex(r"\theta\ \text{(angle in radians)}")
+
+# Number input (no LaTeX in label, just plain text)
+theta = st.sidebar.number_input("Enter value for theta", value=1.0)
+
+st.write(f"You entered θ = {theta}")
+b = st.sidebar.number_input("Enter value for Temperature:",value=None)
 lower_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=1)
 upper_E=st.sidebar.number_input("Enter value for lower limit of epsilon: ",value=100)
 
@@ -288,4 +296,5 @@ st.markdown("""
     <p><strong>under guidance of Dr. C. Konar</strong></p>
 </div>
 """, unsafe_allow_html=True)
+
 
